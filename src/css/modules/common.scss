@@ -1,0 +1,6 @@
+
+.clearfix:after{ content:""; clear:both; display: block;}
+.l{ float:left;}
+.r{ float:right;}
+.container{ width:$containerWidth; margin:0 auto; position: relative;}
+.container-fulid{ position: relative;}
