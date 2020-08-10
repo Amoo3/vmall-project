@@ -35,6 +35,7 @@ define(['jquery',
 
     function initGoods(name , res){
         var title = res.title;
+        var type = res.type;
         var data = res.goods_list;
         var tmp = `
             <h2 class="goods_title">${title}</h2>
@@ -43,7 +44,7 @@ define(['jquery',
                     data.map((v,i,a)=>{
                         return `
                             <li>
-                                <a href="#">
+                                <a href="/view/detail.html?type=${type}&id=${v.goodsId}">
                                     <div><img src="${v.goodsImg}" alt=""></div>
                                     <h3>${v.goodsName}</h3>
                                     <p>${v.goodsPrice}</p>
