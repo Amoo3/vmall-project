@@ -7,8 +7,13 @@ define(['jquery'],function($){
         return $.ajax('/api/mock/banner.json');
     }
 
+    function getGoodsData(name){
+        return $.ajax(`/api/mock/${name}.json`);
+    }
+
     return {
-        getBannerData
+        getBannerData,
+        getGoodsData
     }
 
 });
