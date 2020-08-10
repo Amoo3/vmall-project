@@ -29,6 +29,20 @@ function staticTask(){
             .pipe(dest('dist/static'));
 }
 
+function libTask(){
+    return src('./src/lib/**')
+            .pipe(dest('dist/lib'));
+}
+
+function jsTask(){
+    return src('./src/js/**')
+            .pipe(dest('dist/js'));
+}
+function apiTask(){
+    return src('./src/api/**')
+            .pipe(dest('dist/api'));
+}
+
 function webTask(){   //开启一个web服务
     return src('dist')     
         .pipe( webserver({
@@ -43,11 +57,16 @@ function watchTask(){   //实时监听文件的变化
     watch('./src/view/**' , htmlTask);
     watch('./src/css/**' , cssTask);
     watch('./src/static/**' , staticTask);
+    watch('./src/lib/**' , libTask);
+    watch('./src/js/**' , jsTask);
+    watch('./src/api/**' , apiTask);
 }
+
+
 
 module.exports = {
     //开发命令
-    dev : series(cleanTask , parallel(htmlTask , cssTask , staticTask) , parallel(webTask , watchTask)),
+    dev : series(cleanTask , parallel(htmlTask , cssTask , staticTask , libTask , jsTask , apiTask) , parallel(webTask , watchTask)),
     //生产命令
     build : series(cleanTask)
 };
