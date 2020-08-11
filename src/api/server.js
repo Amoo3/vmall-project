@@ -24,6 +24,14 @@ define(['jquery'],function($){
         });
     }
 
+    function getLogin(){
+        return $.ajax('/api2/login.php');
+    }
+
+    getLogin().then((res)=>{
+        console.log(res);
+    }).catch(()=>{});
+
     return {
         getBannerData,
         getGoodsData,
