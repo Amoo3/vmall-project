@@ -8,10 +8,12 @@ requirejs.config({
 
 define(['jquery', 
         '../api/server',
-        './modules/banner'
+        './modules/banner',
+        './modules/storage'
     ],function($, 
         { getBannerData , getDetailData },
-        initBanner
+        initBanner,
+        { addCartStorage }
         ){
 
     getBannerData().then((res)=>{
@@ -36,6 +38,7 @@ define(['jquery',
         magnifier();
         chooseColors();
         chooseNumbers();
+        addCart(res);
     }
 
     function create(res){    //渲染数据
@@ -67,7 +70,7 @@ define(['jquery',
                         <span>+</span>
                         <span>-</span>
                     </div>
-                    <div class="detail_message_cart l"><a href="#">加入购物车</a></div>
+                    <div class="detail_message_cart l"><a href="javascript:;">加入购物车</a></div>
                     <div class="detail_message_computed l"><a href="/view/cart.html">立即下单</a></div>
                 </div>
             </div>
@@ -159,6 +162,27 @@ define(['jquery',
             if( re.test(val) ){
                 $(this).val(1);
             }
+        });
+    }
+
+    function addCart(res){   //添加购物车
+        var $detail_message_cart = $detail.find('.detail_message_cart');
+        $detail_message_cart.click(function(){
+
+            var data = {
+                goodsChecked : true,   // 商品在购物车中是否是选中的
+                goodsName : res.goodsName,
+                goodsPrice : res.goodsPrice,
+                goodsId : res.goodsId,
+                goodsColor : $detail.find('.detail_message_box').filter('.active').html(),
+                goodsNumber : Number($detail.find('.detail_message_num input').val())
+            };
+
+            //console.log(data);   // 要想办法添加到本地存储中，这样购车页就可以获取到数据了。
+
+            addCartStorage(data,function(){
+                alert('购物车添加成功！！');
+            });
         });
     }
 
