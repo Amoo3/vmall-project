@@ -16,7 +16,8 @@ define(['jquery',
         ){
 
     //console.log($);
-
+    toLogin();
+    toReg();
     getBannerData().then((res)=>{
         //console.log(res);
         if(res.code == 0){
@@ -57,5 +58,13 @@ define(['jquery',
         `;
         $(`#${name}`).html(tmp);
     }
-
+    function toLogin(){
+        $(".logi button").eq(0).on('click',function(){
+            location.href = "login.html";
+        })
+    }
+    function toReg(){}
+    $('.logi button').eq(1).on('click',function(){
+        location.href = "reg.html";
+    })
 });

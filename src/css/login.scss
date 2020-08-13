@@ -1,0 +1,38 @@
+.box{
+    min-height: 600px;
+    position: relative;
+}
+.title{
+    padding: 100px 0 80px;
+    font-size: 32px;
+    text-align: center;
+    span{
+        color: #191919;
+    }
+}
+.login-con{
+    width: 300px;
+    height: 250px;
+    position: absolute;
+    left: 40%;
+    top: 40%;
+    input{
+        padding: 0 10px;
+        width: 280px;
+        height: 50px;
+        border-radius: 8px;
+        border: none;
+        background: rgba(0, 0, 0, 0.05);
+        margin-bottom: 50px;
+        font-size: 14px;
+        line-height: 50px;
+    }
+}
+.box1{
+        margin-left: 10px;
+}
+.btn-sty{
+    width: 130px;
+    height: 50px;
+    border: none;
+}
